@@ -1,0 +1,28 @@
+project:
+  random_seed: 42
+
+paths:
+  raw_data: data/raw/telco_churn.csv
+  processed_dir: data/processed
+  models_dir: models
+  reports_dir: reports
+  log_file: logs/churn.log
+
+data:
+  target: Churn
+  id_column: customerID
+  positive_label: "Yes"
+
+split:
+  train_size: 0.60
+  val_size: 0.20
+  test_size: 0.20
+
+cv:
+  n_splits: 5
+
+# ASSUMPTIONS, not facts about the real company. Change them freely.
+business:
+  customer_ltv: 1000.0
+  retention_offer_cost: 50.0
+  offer_success_rate: 0.30
