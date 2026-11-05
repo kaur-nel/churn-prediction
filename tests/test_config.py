@@ -13,6 +13,7 @@ VALID = {
     "paths": {
         "raw_data": "data/raw/x.csv",
         "processed_dir": "data/processed",
+        "processed_data": "data/processed/telco_clean.csv",
         "models_dir": "models",
         "reports_dir": "reports",
         "log_file": "logs/churn.log",

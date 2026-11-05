@@ -12,7 +12,14 @@ DEFAULT_CONFIG_PATH = "configs/config.yaml"
 
 REQUIRED_KEYS: dict[str, list[str]] = {
     "project": ["random_seed"],
-    "paths": ["raw_data", "processed_dir", "models_dir", "reports_dir", "log_file"],
+    "paths": [
+        "raw_data",
+        "processed_dir",
+        "processed_data",
+        "models_dir",
+        "reports_dir",
+        "log_file",
+    ],
     "data": ["target", "id_column", "positive_label"],
     "split": ["train_size", "val_size", "test_size"],
     "cv": ["n_splits"],
