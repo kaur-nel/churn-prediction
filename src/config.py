@@ -12,18 +12,12 @@ DEFAULT_CONFIG_PATH = "configs/config.yaml"
 
 REQUIRED_KEYS: dict[str, list[str]] = {
     "project": ["random_seed"],
-    "paths": [
-        "raw_data",
-        "processed_dir",
-        "processed_data",
-        "models_dir",
-        "reports_dir",
-        "log_file",
-    ],
+    "paths": ["raw_data", "processed_dir", "processed_data", "models_dir", "reports_dir", "log_file"],
     "data": ["target", "id_column", "positive_label"],
     "split": ["train_size", "val_size", "test_size"],
     "cv": ["n_splits"],
     "business": ["customer_ltv", "retention_offer_cost", "offer_success_rate"],
+    "models": ["logreg_drop_columns", "logreg", "random_forest", "xgboost", "lightgbm"],
 }
 
 
@@ -38,11 +32,7 @@ def _is_int(value: Any) -> bool:
 
 def _is_number(value: Any) -> bool:
     """True for finite ints/floats (bool, NaN and infinity are excluded)."""
-    return (
-        isinstance(value, int | float)
-        and not isinstance(value, bool)
-        and math.isfinite(value)
-    )
+    return isinstance(value, int | float) and not isinstance(value, bool) and math.isfinite(value)
 
 
 def validate_config(cfg: dict[str, Any]) -> None:
@@ -59,9 +49,7 @@ def validate_config(cfg: dict[str, Any]) -> None:
             raise ConfigError(f"Missing config section: '{section}'")
         block = cfg[section]
         if not isinstance(block, dict):
-            raise ConfigError(
-                f"Config section '{section}' must be a mapping, got {type(block).__name__}"
-            )
+            raise ConfigError(f"Config section '{section}' must be a mapping, got {type(block).__name__}")
         missing = [key for key in keys if key not in block]
         if missing:
             raise ConfigError(f"Config section '{section}' is missing keys: {missing}")
@@ -80,9 +68,7 @@ def validate_config(cfg: dict[str, Any]) -> None:
     for key in REQUIRED_KEYS["split"]:
         value = cfg["split"][key]
         if not _is_number(value) or not 0 < value < 1:
-            raise ConfigError(
-                f"'split.{key}' must be a number between 0 and 1 (exclusive), got {value!r}"
-            )
+            raise ConfigError(f"'split.{key}' must be a number between 0 and 1 (exclusive), got {value!r}")
         total += value
     if not math.isclose(total, 1.0, abs_tol=1e-6):
         raise ConfigError(f"'split' sizes must sum to 1.0, got {total:.4f}")
@@ -101,6 +87,14 @@ def validate_config(cfg: dict[str, Any]) -> None:
     rate = business["offer_success_rate"]
     if not _is_number(rate) or not 0 <= rate <= 1:
         raise ConfigError(f"'business.offer_success_rate' must be between 0 and 1, got {rate!r}")
+
+    models = cfg["models"]
+    drop = models["logreg_drop_columns"]
+    if not isinstance(drop, list) or not all(isinstance(item, str) for item in drop):
+        raise ConfigError(f"'models.logreg_drop_columns' must be a list of strings, got {drop!r}")
+    for name in ("logreg", "random_forest", "xgboost", "lightgbm"):
+        if not isinstance(models[name], dict):
+            raise ConfigError(f"'models.{name}' must be a mapping of parameters, got {models[name]!r}")
 
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:

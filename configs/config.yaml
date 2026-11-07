@@ -27,3 +27,22 @@ business:
   customer_ltv: 1000.0
   retention_offer_cost: 50.0
   offer_success_rate: 0.30
+
+models:
+  logreg_drop_columns: ["TotalCharges"]   # features left out of logistic regression (VIF check)
+  logreg:
+    C: 1.0
+    max_iter: 1000
+  random_forest:
+    n_estimators: 300
+    max_depth: 8
+    min_samples_leaf: 5
+  xgboost:
+    n_estimators: 300
+    learning_rate: 0.05
+    max_depth: 4
+  lightgbm:
+    n_estimators: 300
+    learning_rate: 0.05
+    num_leaves: 31
+    min_child_samples: 20

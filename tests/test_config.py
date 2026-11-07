@@ -22,6 +22,13 @@ VALID = {
     "split": {"train_size": 0.6, "val_size": 0.2, "test_size": 0.2},
     "cv": {"n_splits": 5},
     "business": {"customer_ltv": 1000.0, "retention_offer_cost": 50.0, "offer_success_rate": 0.3},
+    "models": {
+        "logreg_drop_columns": ["TotalCharges"],
+        "logreg": {"C": 1.0},
+        "random_forest": {"n_estimators": 10},
+        "xgboost": {"n_estimators": 10},
+        "lightgbm": {"n_estimators": 10},
+    },
 }
 
 
@@ -140,4 +147,18 @@ def test_bad_values_raise(section, key, bad_value):
     cfg = make_cfg()
     cfg[section][key] = bad_value
     with pytest.raises(ConfigError, match=key):
+        validate_config(cfg)
+
+
+def test_bad_logreg_drop_columns_raises():
+    cfg = make_cfg()
+    cfg["models"]["logreg_drop_columns"] = "TotalCharges"
+    with pytest.raises(ConfigError, match="logreg_drop_columns"):
+        validate_config(cfg)
+
+
+def test_model_params_must_be_a_mapping():
+    cfg = make_cfg()
+    cfg["models"]["lightgbm"] = 5
+    with pytest.raises(ConfigError, match="lightgbm"):
         validate_config(cfg)
