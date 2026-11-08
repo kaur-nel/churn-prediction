@@ -1,4 +1,4 @@
-.PHONY: lint test data split features imbalance
+.PHONY: lint test data split features imbalance compare
 
 lint:
 	ruff check .
@@ -17,3 +17,6 @@ features:
 
 imbalance:
 	python -m src.imbalance
+
+compare:
+	python -m src.compare

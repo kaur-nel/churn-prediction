@@ -30,3 +30,4 @@ logs/
 .DS_Store
 Thumbs.db
 .vscode/
+mlflow.db
