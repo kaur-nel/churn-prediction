@@ -1,0 +1,16 @@
+{
+  "threshold": 0.17071456705000446,
+  "chosen_on": "validation split (1409 customers)",
+  "targeted_pct": 52.4485450674237,
+  "expected_net_per_1000_customers": 44038.325053229244,
+  "precision": 0.4465493910690122,
+  "recall": 0.8823529411764706,
+  "break_even_probability": 0.16666666666666666,
+  "net_per_1000_at_break_even": 43825.40809084457,
+  "assumptions": {
+    "customer_ltv": 1000.0,
+    "retention_offer_cost": 50.0,
+    "offer_success_rate": 0.3
+  },
+  "note": "Money figures use placeholder assumptions, not real company data."
+}

@@ -1,4 +1,4 @@
-.PHONY: lint test data split features imbalance compare tune final
+.PHONY: lint test data split features imbalance compare tune final business
 
 lint:
 	ruff check .
@@ -26,3 +26,6 @@ tune:
 
 final:
 	python -m src.final_model
+
+business:
+	python -m src.business
