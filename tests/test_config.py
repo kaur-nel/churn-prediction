@@ -29,6 +29,11 @@ VALID = {
         "xgboost": {"n_estimators": 10},
         "lightgbm": {"n_estimators": 10},
     },
+    "tuning": {
+        "n_trials": 30,
+        "models": ["random_forest", "logreg"],
+        "search_space": {"logreg": {"C": {"type": "float", "low": 0.001, "high": 100.0, "log": True}}},
+    },
 }
 
 
@@ -141,6 +146,12 @@ def test_split_not_summing_to_one_raises():
         ("data", "positive_label", True),
         ("split", "val_size", "0.2"),
         ("split", "test_size", 0),
+        ("tuning", "n_trials", 0),
+        ("tuning", "n_trials", "30"),
+        ("tuning", "n_trials", True),
+        ("tuning", "models", []),
+        ("tuning", "models", "logreg"),
+        ("tuning", "search_space", "x"),
     ],
 )
 def test_bad_values_raise(section, key, bad_value):

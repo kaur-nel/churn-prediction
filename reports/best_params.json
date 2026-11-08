@@ -1,0 +1,17 @@
+{
+  "random_forest": {
+    "strategy": "class_weight",
+    "params": {
+      "n_estimators": 225,
+      "max_depth": 15,
+      "min_samples_leaf": 14,
+      "max_features": 0.24520485845501963
+    }
+  },
+  "logreg": {
+    "strategy": "baseline",
+    "params": {
+      "C": 29.148490481276124
+    }
+  }
+}

@@ -18,6 +18,7 @@ REQUIRED_KEYS: dict[str, list[str]] = {
     "cv": ["n_splits"],
     "business": ["customer_ltv", "retention_offer_cost", "offer_success_rate"],
     "models": ["logreg_drop_columns", "logreg", "random_forest", "xgboost", "lightgbm"],
+    "tuning": ["n_trials", "models", "search_space"],
 }
 
 
@@ -95,6 +96,16 @@ def validate_config(cfg: dict[str, Any]) -> None:
     for name in ("logreg", "random_forest", "xgboost", "lightgbm"):
         if not isinstance(models[name], dict):
             raise ConfigError(f"'models.{name}' must be a mapping of parameters, got {models[name]!r}")
+
+    tuning = cfg["tuning"]
+    n_trials = tuning["n_trials"]
+    if not _is_int(n_trials) or n_trials < 1:
+        raise ConfigError(f"'tuning.n_trials' must be an integer >= 1, got {n_trials!r}")
+    tuned = tuning["models"]
+    if not isinstance(tuned, list) or not tuned or not all(isinstance(item, str) for item in tuned):
+        raise ConfigError(f"'tuning.models' must be a non-empty list of model names, got {tuned!r}")
+    if not isinstance(tuning["search_space"], dict):
+        raise ConfigError(f"'tuning.search_space' must be a mapping, got {tuning['search_space']!r}")
 
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
