@@ -1,0 +1,5 @@
+attribute,group,customers,positives,churn_rate,mean_predicted,selection_rate,precision,recall,false_positive_rate,roc_auc,reliable
+gender,Female,687,193,0.2809,0.2677,0.5226,0.4763,0.886,0.3806,0.8421,True
+gender,Male,722,181,0.2507,0.2639,0.5111,0.4444,0.9061,0.3789,0.8497,True
+SeniorCitizen,0,1187,276,0.2325,0.237,0.4667,0.4332,0.8696,0.3447,0.847,True
+SeniorCitizen,1,222,98,0.4414,0.4194,0.7838,0.546,0.9694,0.6371,0.7796,True

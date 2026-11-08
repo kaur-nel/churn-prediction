@@ -1,0 +1,72 @@
+{
+  "evaluated_at_utc": "2026-11-08T18:29:53+00:00",
+  "evaluation_count": 1,
+  "test_rows": 1409,
+  "test_churn_rate": 0.2654364797728886,
+  "threshold": 0.17071456705000446,
+  "threshold_chosen_on": "validation split (reports/threshold_choice.json)",
+  "assumptions": {
+    "customer_ltv": 1000.0,
+    "retention_offer_cost": 50.0,
+    "offer_success_rate": 0.3
+  },
+  "model_sha256": "e9446ba9e273978eca9b9a552b5c984c23f3b3c67851e654ec0ad40760569884",
+  "test_file_sha256": "56b3406a9eddeb7ac27550f49bd3d4e681057c0d091b3ffc2df39b68d82193fa",
+  "bootstrap": {
+    "n_resamples": 1000,
+    "skipped_single_class": 0,
+    "ci_level": 0.95
+  },
+  "metrics": {
+    "pr_auc": {
+      "estimate": 0.6515544559030446,
+      "ci_low": 0.5985171969364547,
+      "ci_high": 0.7022363328626736
+    },
+    "roc_auc": {
+      "estimate": 0.8454700457258002,
+      "ci_low": 0.8227841683348229,
+      "ci_high": 0.8664298262140273
+    },
+    "precision": {
+      "estimate": 0.46016483516483514,
+      "ci_low": 0.4231793574336885,
+      "ci_high": 0.49667697956249357
+    },
+    "recall": {
+      "estimate": 0.8957219251336899,
+      "ci_low": 0.8624498933745668,
+      "ci_high": 0.9261213720316622
+    },
+    "f1": {
+      "estimate": 0.6079854809437387,
+      "ci_low": 0.5719657051990534,
+      "ci_high": 0.6419414749711176
+    },
+    "brier": {
+      "estimate": 0.13596695178972182,
+      "ci_low": 0.12488864516575708,
+      "ci_high": 0.14587262883571936
+    },
+    "targeted_pct": {
+      "estimate": 51.66784953867992,
+      "ci_low": 49.04009936124912,
+      "ci_high": 54.506742370475514
+    },
+    "net_per_1000": {
+      "estimate": 45493.25762952449,
+      "ci_low": 38962.91696238467,
+      "ci_high": 51384.847409510294
+    }
+  },
+  "confusion_matrix": {
+    "tn": 642,
+    "fp": 393,
+    "fn": 39,
+    "tp": 335
+  },
+  "expected_calibration_error": 0.014743770112792388,
+  "net_per_1000_target_everyone": 29630.94393186657,
+  "net_per_1000_expected_on_validation": 44038.325053229244,
+  "note": "Money figures use placeholder assumptions, not real company data."
+}

@@ -1,0 +1,3 @@
+attribute,groups_compared,recall_gap,false_positive_rate_gap,selection_rate_gap
+gender,2,0.0201,0.0016,0.0115
+SeniorCitizen,2,0.0998,0.2924,0.3171

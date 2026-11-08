@@ -83,3 +83,11 @@ final:
   calibration_candidates: ["none", "sigmoid", "isotonic"]
   calibration_bins: 10
   min_brier_gain: 0.001   # a calibration fix must beat "none" by at least this much Brier score
+
+# Final one-time evaluation on the test split (Step 12).
+evaluation:
+  n_bootstrap: 1000
+  ci_level: 0.95
+  calibration_bins: 10
+  fairness_columns: ["gender", "SeniorCitizen"]
+  min_group_positives: 30   # a group with fewer churners or non-churners than this is marked unreliable
