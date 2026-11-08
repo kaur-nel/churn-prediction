@@ -1,0 +1,47 @@
+feature,mean_abs_shap
+tenure,0.6836
+Contract_Two year,0.3022
+InternetService_No,0.2414
+InternetService_Fiber optic,0.21514
+is_fiber_optic,0.21514
+month_to_month_new,0.21339
+Contract_Month-to-month,0.20717
+is_month_to_month,0.20717
+MultipleLines_No,0.17424
+tenure_bucket_49+,0.16838
+StreamingTV_No,0.16532
+PaperlessBilling_No,0.15557
+StreamingMovies_No,0.14875
+OnlineSecurity_Yes,0.1236
+TechSupport_Yes,0.11793
+tenure_bucket_7-12,0.10437
+Dependents_Yes,0.10419
+addon_count,0.10344
+OnlineBackup_Yes,0.09509
+DeviceProtection_No,0.08844
+PhoneService_Yes,0.0873
+MonthlyCharges,0.0803
+Partner_Yes,0.07618
+Partner_No,0.07534
+PaymentMethod_Credit card (automatic),0.06076
+PaymentMethod_Bank transfer (automatic),0.04988
+DeviceProtection_Yes,0.04909
+SeniorCitizen,0.04689
+OnlineBackup_No,0.043
+is_electronic_check,0.03967
+PaymentMethod_Electronic check,0.03967
+Contract_One year,0.03733
+PhoneService_No,0.03433
+tenure_bucket_13-24,0.02917
+MultipleLines_Yes,0.02584
+PaymentMethod_Mailed check,0.02367
+Dependents_No,0.02279
+StreamingTV_Yes,0.02157
+charges_ratio,0.01365
+InternetService_DSL,0.01163
+tenure_bucket_25-48,0.01136
+PaperlessBilling_Yes,0.00826
+TechSupport_No,0.00771
+tenure_bucket_0-6,0.00761
+StreamingMovies_Yes,0.00412
+OnlineSecurity_No,0.00096

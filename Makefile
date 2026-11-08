@@ -1,4 +1,4 @@
-.PHONY: lint test data split features imbalance compare tune final business evaluate train
+.PHONY: lint test data split features imbalance compare tune final business evaluate explain train
 
 lint:
 	ruff check .
@@ -32,5 +32,8 @@ business:
 
 evaluate:
 	python -m src.evaluate
+
+explain:
+	python -m src.explain
 
 train: data split final

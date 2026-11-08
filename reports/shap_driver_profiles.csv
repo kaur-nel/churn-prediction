@@ -1,0 +1,16 @@
+group,value,customers,mean_shap,odds_multiplier,observed_churn_rate
+Contract,Month-to-month,776,0.55747,1.74624,0.41753
+Contract,One year,308,-0.16799,0.84537,0.12013
+Contract,Two year,325,-1.1135,0.32841,0.04
+InternetService,Fiber optic,640,0.65312,1.92152,0.41406
+InternetService,DSL,463,-0.24357,0.78382,0.1879
+InternetService,No,306,-0.93025,0.39445,0.0719
+tenure,0-6,266,0.91996,2.5092,0.5188
+tenure,13-24,189,0.27537,1.31702,0.26455
+tenure,7-12,153,0.11795,1.12519,0.39869
+tenure,25-48,350,-0.1969,0.82127,0.21429
+tenure,49+,451,-0.63429,0.53031,0.11086
+month_to_month_new,1,385,0.37797,1.45931,0.51169
+month_to_month_new,0,1024,-0.15151,0.85941,0.17285
+MultipleLines,Yes,610,0.23657,1.2669,0.29016
+MultipleLines,No,799,-0.17223,0.84179,0.24656

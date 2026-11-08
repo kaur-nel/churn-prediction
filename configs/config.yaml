@@ -91,3 +91,8 @@ evaluation:
   calibration_bins: 10
   fairness_columns: ["gender", "SeniorCitizen"]
   min_group_positives: 30   # a group with fewer churners or non-churners than this is marked unreliable
+
+# SHAP explainability on the validation split (Step 13).
+explainability:
+  top_n: 5          # how many top drivers get a detailed profile
+  max_display: 15   # how many features the SHAP plots show

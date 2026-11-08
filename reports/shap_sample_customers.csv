@@ -1,0 +1,4 @@
+role,customer_id,predicted_risk,actually_churned,threshold,top_contributions_log_odds
+highest_risk,5567-WSELE,0.90165,1,0.17071,tenure +0.93; month_to_month_new +0.38; is_fiber_optic +0.25; InternetService_Fiber optic +0.25; StreamingTV_No +0.21
+nearest_threshold,9057-MSWCO,0.17071,1,0.17071,PhoneService_Yes +0.45; OnlineSecurity_Yes -0.21; Contract_Two year +0.20; PaperlessBilling_No -0.19; InternetService_Fiber optic -0.19
+lowest_risk,6928-ONTRW,0.00341,0,0.17071,tenure -1.26; Contract_Two year -0.63; InternetService_No -0.56; tenure_bucket_49+ +0.27; is_month_to_month -0.23
