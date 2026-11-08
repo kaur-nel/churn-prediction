@@ -1,0 +1,15 @@
+{
+  "model": "logreg",
+  "strategy": "baseline",
+  "params": {},
+  "calibration": "none",
+  "validation_metrics": {
+    "pr_auc": 0.6511911189741119,
+    "roc_auc": 0.8396535689374564,
+    "brier": 0.13680125132763263,
+    "ece": 0.023955798882186373
+  },
+  "train_rows": 4225,
+  "val_rows": 1409,
+  "seed": 42
+}

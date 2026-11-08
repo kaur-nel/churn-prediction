@@ -69,3 +69,13 @@ tuning:
       learning_rate: {type: float, low: 0.01, high: 0.3, log: true}
       num_leaves: {type: int, low: 8, high: 64}
       min_child_samples: {type: int, low: 10, high: 60}
+
+# Step 9 showed tuning gave no real gain, so the final model uses the config defaults (params: {}).
+# logreg and random_forest were statistically tied; logreg is the simpler model.
+final:
+  model: logreg
+  strategy: baseline
+  params: {}
+  calibration_candidates: ["none", "sigmoid", "isotonic"]
+  calibration_bins: 10
+  min_brier_gain: 0.001   # a calibration fix must beat "none" by at least this much Brier score
