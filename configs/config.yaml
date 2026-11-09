@@ -96,3 +96,14 @@ evaluation:
 explainability:
   top_n: 5          # how many top drivers get a detailed profile
   max_display: 15   # how many features the SHAP plots show
+
+# Scoring new customers (Step 14).
+prediction:
+  max_rows: 100000   # refuse bigger CSV files: the whole file is read into memory
+
+# Feature drift check with the Population Stability Index (Step 14).
+drift:
+  n_bins: 10
+  moderate_threshold: 0.1   # PSI at or above this = noticeable shift (a common rule of thumb)
+  major_threshold: 0.25     # PSI at or above this = big shift (a common rule of thumb)
+  min_rows: 100             # fewer rows than this give a meaningless PSI
