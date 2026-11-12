@@ -107,3 +107,8 @@ drift:
   moderate_threshold: 0.1   # PSI at or above this = noticeable shift (a common rule of thumb)
   major_threshold: 0.25     # PSI at or above this = big shift (a common rule of thumb)
   min_rows: 100             # fewer rows than this give a meaningless PSI
+
+# Model card and final report (Step 15).
+report:
+  docs_dir: docs
+  fairness_gap_flag: 0.10   # a group gap above this (recall, false-positive rate or share flagged) is flagged

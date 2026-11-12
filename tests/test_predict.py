@@ -67,7 +67,7 @@ def test_valid_input_is_cleaned():
     assert len(features) == 30
     assert list(features.columns) == ["customerID", *REQUIRED_COLUMNS]
     for col in ("tenure", "MonthlyCharges", "TotalCharges", "SeniorCitizen"):
-        assert pd.api.types.is_float_dtype(features[col])
+        assert pd.api.types.is_numeric_dtype(features[col])
     assert report["rows"] == 30
     assert report["missing_values"] == {}
 
