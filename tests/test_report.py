@@ -252,7 +252,7 @@ def test_invalid_json_raises(tmp_path):
         load_results(tmp_path / "reports")
 
 
-def make_test_json_that_is_not_an_object_raises(tmp_path):
+def test_json_that_is_not_an_object_raises(tmp_path):
     write_reports(tmp_path / "reports")
     (tmp_path / "reports" / "test_results.json").write_text("[1, 2]", encoding="utf-8")
     with pytest.raises(ReportError, match="JSON object"):
