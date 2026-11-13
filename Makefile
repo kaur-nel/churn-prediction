@@ -1,10 +1,13 @@
-.PHONY: lint test data split features imbalance compare tune final business evaluate explain drift predict report train
+.PHONY: lint test pin data split features imbalance compare tune final business evaluate explain drift predict report health train
 
 lint:
 	ruff check .
 
 test:
 	pytest -q
+
+pin:
+	python -m src.pin_requirements
 
 data:
 	python -m src.data
@@ -45,4 +48,8 @@ predict:
 report:
 	python -m src.report
 
-train: data split final
+health:
+	python -m src.health
+
+train:
+	python -m src.train

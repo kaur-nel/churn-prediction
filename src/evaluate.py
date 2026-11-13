@@ -15,7 +15,9 @@ import json
 import logging
 import math
 import pickle
+import struct
 import sys
+import zlib
 from collections.abc import Sequence
 from datetime import UTC, datetime
 from pathlib import Path
@@ -44,6 +46,13 @@ from src.split import SplitError, load_split
 METRIC_NAMES = ["pr_auc", "roc_auc", "precision", "recall", "f1", "brier", "targeted_pct", "net_per_1000"]
 ECONOMICS_KEYS = ("customer_ltv", "retention_offer_cost", "offer_success_rate")
 SETTING_KEYS = ["n_bootstrap", "ci_level", "calibration_bins", "fairness_columns", "min_group_positives"]
+
+# A damaged pickle can fail in many different ways (bad opcode, truncated data, wrong module, corrupt
+# compression, ...). Any of them means "this model file cannot be used", so all are reported the same way.
+MODEL_LOAD_ERRORS = (
+    OSError, EOFError, ValueError, ImportError, AttributeError, IndexError, KeyError, TypeError,
+    OverflowError, RuntimeError, struct.error, zlib.error, pickle.PickleError,
+)
 
 
 class EvaluationError(Exception):
@@ -129,14 +138,16 @@ def load_threshold(path: Path) -> dict[str, Any]:
 def load_model(path: Path) -> Any:
     """Load the frozen final model.
 
+    Only load model files that this project wrote: unpickling a file from an untrusted source can run code.
+
     Raises:
-        EvaluationError: if the file is missing or cannot be loaded.
+        EvaluationError: if the file is missing or cannot be loaded (including a damaged file).
     """
     if not path.exists():
         raise EvaluationError(f"Final model not found: {path}. Run `python -m src.final_model` first")
     try:
         return joblib.load(path)
-    except (OSError, EOFError, ValueError, ImportError, AttributeError, pickle.UnpicklingError) as exc:
+    except MODEL_LOAD_ERRORS as exc:
         raise EvaluationError(f"Could not load the final model from {path}: {exc}") from exc
 
 

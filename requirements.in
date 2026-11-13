@@ -10,12 +10,5 @@ mlflow
 joblib
 pyyaml
 python-dotenv
-pandera
 matplotlib
-seaborn
-jupyter
-ipykernel
 statsmodels
-pytest
-pytest-cov
-ruff

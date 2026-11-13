@@ -21,13 +21,16 @@ models/*
 !models/.gitkeep
 mlruns/
 mlartifacts/
+mlflow.db
 
 # Logs and reports
 logs/
 *.log
 
+# Docker run output
+docker_out/
+
 # OS / editor
 .DS_Store
 Thumbs.db
 .vscode/
-mlflow.db
