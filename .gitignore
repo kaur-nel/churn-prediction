@@ -19,9 +19,7 @@ data/processed/*
 # Models and experiment tracking
 models/*
 !models/.gitkeep
-mlruns/
-mlartifacts/
-mlflow.db
+!models/final_model.joblib
 
 # Logs and reports
 logs/
