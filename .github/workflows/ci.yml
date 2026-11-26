@@ -38,3 +38,16 @@ jobs:
         run: docker build -t churn-prediction .
       - name: Health check inside the image
         run: docker run --rm churn-prediction python -m src.health
+      - name: Score sample customers inside the image
+        run: |
+          mkdir out
+          chmod 777 out
+          docker run --rm \
+            -v "${{ github.workspace }}/models:/app/models:ro" \
+            -v "${{ github.workspace }}/reports:/app/reports:ro" \
+            -v "${{ github.workspace }}/examples:/app/examples:ro" \
+            -v "${{ github.workspace }}/out:/app/out" \
+            churn-prediction \
+            python -m src.predict --input examples/sample_customers.csv --output out/predictions.csv
+          test "$(wc -l < out/predictions.csv)" -eq 6
+          head -3 out/predictions.csv
