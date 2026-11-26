@@ -94,6 +94,8 @@ pip install -r requirements-dev.txt
 
 **Data:** the dataset is not included in this repository. Download *Telco Customer Churn* from Kaggle (`WA_Fn-UseC_-Telco-Customer-Churn.csv`) and save it as `data/raw/telco_churn.csv`. Check the dataset's terms on Kaggle before reusing it.
 
+**Note:** `requirements.txt` pins the direct dependencies (used for local setup). `requirements.lock.txt` pins every dependency, resolved for Linux and Python 3.12, and is what the Docker image installs.
+
 ## Usage
 
 ```powershell
@@ -139,14 +141,9 @@ The image builds and passes the health check in GitHub Actions. I could not buil
 - **Wide intervals:** the test split holds 374 churners.
 - **Fairness:** the SeniorCitizen gap above is unresolved, and only `gender` and `SeniorCitizen` were checked.
 - **Docker** was verified only in CI.
-- **Pinned requirements** list direct dependencies only (a Windows `pip freeze` includes Windows-only packages), so indirect dependencies float at install time.
 
 ## Next steps
 
 - Measure the real offer effect with a randomized test; consider uplift modelling.
 - Address the SeniorCitizen gap with a new model version evaluated on fresh data.
 - Pin all dependencies across platforms.
-
-## License
-
-Code released under the MIT License (see `LICENSE`). The dataset is not included and is subject to its Kaggle terms.

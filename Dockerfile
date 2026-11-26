@@ -17,8 +17,8 @@ RUN useradd --create-home --uid 10001 app
 
 WORKDIR /app
 
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
+COPY requirements.lock.txt ./
+RUN pip install -r requirements.lock.txt
 
 COPY configs ./configs
 COPY src ./src
